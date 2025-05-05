@@ -1,0 +1,35 @@
+{
+  "name": "dagger-demo",
+  "engineVersion": "v0.18.0",
+  "sdk": {
+    "source": "python"
+  },
+  "dependencies": [
+    {
+      "name": "k3s",
+      "source": "github.com/marcosnils/daggerverse/k3s@k3s/v0.1.10",
+      "pin": "28eea1fcf3b6ecb38a628186107760acd717442f"
+    },
+    {
+      "name": "k3s1",
+      "source": "github.com/disaster37/dagger-library-go/k3s@5e49b4f78c709f073f0d2489a4112ae652c3e604",
+      "pin": "5e49b4f78c709f073f0d2489a4112ae652c3e604"
+    },
+    {
+      "name": "k3s2",
+      "source": "github.com/jshbrntt/daggerverse/k3s@4d304818ffc95015d9ae7f41b7ee85529a10e14e",
+      "pin": "4d304818ffc95015d9ae7f41b7ee85529a10e14e"
+    },
+    {
+      "name": "kind",
+      "source": "github.com/orvis98/daggerverse/kind@0084f3cd2a700b5c3f12464632c135a1d1cb7956",
+      "pin": "0084f3cd2a700b5c3f12464632c135a1d1cb7956"
+    },
+    {
+      "name": "kubectl2",
+      "source": "github.com/matipan/daggerverse/kubectl@kubectl/v0.0.3",
+      "pin": "84cbdbe89185ad94690a9ada1cdfb79f1878ecd7"
+    }
+  ],
+  "source": ".dagger"
+}

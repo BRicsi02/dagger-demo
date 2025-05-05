@@ -1,0 +1,14 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: flask-test  # Explicit név megadása
+nodes:
+- role: control-plane
+  # Portmapping
+  extraPortMappings:
+  - containerPort: 30000
+    hostPort: 30000
+    protocol: TCP  # Explicit protokoll
+  # Erőforrás korlátok
+  extraMounts:
+  - hostPath: /run/docker.sock
+    containerPath: /run/docker.sock
