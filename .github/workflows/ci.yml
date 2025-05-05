@@ -1,0 +1,37 @@
+name: Dagger Full-Stack CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  dagger-ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Dagger CLI
+        # Telepíti a Dagger CLI-t az install.sh szkripttel
+        run: |
+          curl -L https://dl.dagger.io/dagger/install.sh | sh
+          echo "$HOME/.dagger/bin" >> $GITHUB_PATH
+
+      - name: Verify Dagger installation
+        run: dagger --version
+
+      - name: Setup Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Python dependencies
+        run: |
+          pip install dagger
+
+      - name: Run Full-Stack Pipeline
+        # meghívja a DaggerDemo.deploy_full_stack() metódust
+        run: dagger call deploy-full-stack --src=app
