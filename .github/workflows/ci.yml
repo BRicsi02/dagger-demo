@@ -3,34 +3,19 @@ name: CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
-  dagger:
+  deploy:
+    name: deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python 3.10
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - name: Install Dagger CLI
-        uses: dagger/install-action@v0.4.0
-        with:
-          version: latest
-
-      - name: Install Dagger Python SDK
-        run: pip install dagger
-
-      - name: Run Full-Stack Pipeline
+      - name: Deploy & Test Full Stack
         uses: dagger/dagger-for-github@8.0.0
         with:
-          version: latest
+          version: "latest"
           verb: call
           module: .dagger/src/dagger_demo
           args: deploy-full-stack --src=app
