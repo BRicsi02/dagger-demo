@@ -13,15 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Python SDK
-        run: pip install dagger-io==0.8.5
-
-      - name: Run Dagger pipeline
+      - name: Call Dagger Full-Stack Pipeline
         uses: dagger/dagger-for-github@8.0.0
-        env:
-          DAGGER_ENGINE_DOCKER_IMAGE: dagger/engine:v0.18.0
         with:
-          version: "v0.8.5"
+          version: "latest"
           module: github.com/BRicsi02/dagger-demo/.dagger/src/dagger_demo@main
-          args: dagger call deploy-full-stack --src=app
-          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+          args: deploy-full-stack --src=app
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }} 
