@@ -23,5 +23,5 @@ jobs:
         with:
           version: "v0.8.5"
           module: github.com/BRicsi02/dagger-demo/.dagger/src/dagger_demo@main
-          args: deploy-full-stack --src=app
+          args: dagger call deploy-full-stack --src=app
           cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
