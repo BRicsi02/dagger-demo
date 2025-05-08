@@ -8,7 +8,7 @@ from dagger import dag, function, object_type, Doc
 class DaggerDemo:
     def __init__(self):
         # előre deklaráljuk az objektum állapotát
-        self.k3s_cluster: dagger.K3sBuilder | None = None
+        self.k3s_cluster = None
 
     @function
     async def build_and_push_images(
